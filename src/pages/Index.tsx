@@ -17,7 +17,8 @@ const Index = () => {
       difficulty: "Легкий",
       price: "4500 ₽",
       description: "Спокойная поездка по лесным тропам для новичков",
-      features: ["Инструктаж", "Экипировка", "Фотосессия"]
+      features: ["Инструктаж", "Экипировка", "Фотосессия"],
+      image: "/img/037736e8-8ee6-40c9-84af-6beef9b3fac4.jpg"
     },
     {
       id: 2,
@@ -26,7 +27,8 @@ const Index = () => {
       difficulty: "Сложный",
       price: "8900 ₽",
       description: "Экстремальное приключение с подъемом на горные склоны",
-      features: ["Профи-гид", "Обед", "Сертификат"]
+      features: ["Профи-гид", "Обед", "Сертификат"],
+      image: "/img/4114dba2-2fd6-45ea-843b-0800a2e5d25c.jpg"
     },
     {
       id: 3,
@@ -35,7 +37,8 @@ const Index = () => {
       difficulty: "Средний",
       price: "6200 ₽",
       description: "Захватывающий маршрут с переправами через реки",
-      features: ["Водонепроницаемая экипировка", "Страховка", "Снэки"]
+      features: ["Водонепроницаемая экипировка", "Страховка", "Снэки"],
+      image: "/img/037736e8-8ee6-40c9-84af-6beef9b3fac4.jpg"
     }
   ];
 
@@ -107,7 +110,13 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-[80vh] bg-gradient-to-br from-earth-200 via-sand-100 to-forest-100 flex items-center">
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/img/037736e8-8ee6-40c9-84af-6beef9b3fac4.jpg)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-6xl font-roboto-slab font-bold text-foreground mb-6 leading-tight">
@@ -146,7 +155,8 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             {tours.map((tour) => (
-              <Card key={tour.id} className="hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card border-2 border-border/50">
+              <Card key={tour.id} className="hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-card border-2 border-border/50 overflow-hidden">
+                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(${tour.image})` }}></div>
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant={tour.difficulty === 'Легкий' ? 'secondary' : tour.difficulty === 'Средний' ? 'default' : 'destructive'}>
@@ -196,7 +206,8 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             {vehicles.map((vehicle, index) => (
-              <Card key={index} className="bg-card border-2 border-border/50 hover:shadow-lg transition-shadow">
+              <Card key={index} className="bg-card border-2 border-border/50 hover:shadow-lg transition-shadow overflow-hidden">
+                <div className="h-40 bg-cover bg-center" style={{ backgroundImage: 'url(/img/0d20c8b5-8ede-46a5-8740-2098f61db03b.jpg)' }}></div>
                 <CardHeader>
                   <CardTitle className="font-roboto-slab text-lg">{vehicle.model}</CardTitle>
                 </CardHeader>
